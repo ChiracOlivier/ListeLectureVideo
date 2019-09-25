@@ -12,6 +12,10 @@ import org.springframework.web.servlet.ModelAndView;
     @Controller
     public class ListeLecture {
 
-       
+        @GetMapping("/watchlist")
+        public ModelAndView getWatchlist() {
+
+           
+        }
     }
 

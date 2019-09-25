@@ -21,7 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
             model.put("numberOfMovies", "1234");
 
-            
+            return new ModelAndView(viewName , model);
         }
     }
 

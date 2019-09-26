@@ -7,13 +7,19 @@ public class WatchlistItem {
     private String priority;
     private String comment;
     private Integer Id;
+    private static int index=0;
+
+    public WatchlistItem() {
+        this.Id = index ++;
+    }
 
     public WatchlistItem(String title, String rating,String priority, String comment, Integer Id) {
+        super();
         this.title = title;
         this.rating= rating;
         this.priority= priority;
         this.comment= comment;
-        this.Id= Id;
+        this.Id= index++;
     }
 
     public String getTitle() {

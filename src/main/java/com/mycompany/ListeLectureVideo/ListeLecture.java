@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class ListeLecture {
 
     private List<WatchlistItem> watchlistItems= new ArrayList<WatchlistItem>();
-    private static int index=1;
+    private static int index=0;
 
     @GetMapping("/watchlist")
     public ModelAndView getWatchlist() {

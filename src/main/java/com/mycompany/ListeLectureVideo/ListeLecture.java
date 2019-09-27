@@ -26,22 +26,26 @@ public class ListeLecture {
         model.put("watchlistItemForm", new WatchlistItem());
         return new ModelAndView(viewName, model);
     }
+    @PostMapping("/watchlistItemForm")
+    public ModelAndView submitWatchlistItemForm(WatchlistItem watchlistItem) {
 
-    @PostMapping("watchlistItemForm")
-    public ModelAndView sumitWatchlistItemForm(WatchlistItem watchlistItem ){
+        WatchlistItem existingItem = findWatchlistItemById(watchlistItem.getId());
 
-        watchlistItem.setId(index++);
-        watchlistItem.setComment("comment");
-        watchlistItem.setPriority("priority");
-        watchlistItem.setRating("rating");
-        watchlistItem.setTitle("title");
-        watchlistItems.add(watchlistItem);
+        if (existingItem == null) {
+            watchlistItem.setId(index++);
+            watchlistItems.add(watchlistItem);
+        } else {
+            existingItem.setComment(watchlistItem.getComment());
+            existingItem.setPriority(watchlistItem.getPriority());
+            existingItem.setRating(watchlistItem.getRating());
+            existingItem.setTitle(watchlistItem.getTitle());
+        }
 
-        RedirectView redirectView= new RedirectView();
-        redirectView.setUrl("/watchlist");
-        return new ModelAndView(redirectView);
+        RedirectView redirect = new RedirectView();
+        redirect.setUrl("/watchlist");
+
+        return new ModelAndView(redirect);
     }
-
     @GetMapping("/watchlist")
     public ModelAndView getWatchlist() {
 

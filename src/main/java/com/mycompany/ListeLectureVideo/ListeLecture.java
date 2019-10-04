@@ -10,6 +10,7 @@ import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -19,18 +20,26 @@ public class ListeLecture {
     private List<WatchlistItem> watchlistItems= new ArrayList<WatchlistItem>();
     private static int index=0;
     @GetMapping("/watchlistItemForm")
-    public ModelAndView showWatchlistItemForm(){
+    public ModelAndView showWatchlistItemForm(@RequestParam(required = false) Integer id){
         String viewName= "watchlistItemForm";
         Map<String, Object> model = new HashMap<String, Object>();
+        WatchlistItem watchlistIte= findWatchlistItemById(id);
+        WatchlistItem watchlistItem;
 
-        model.put("watchlistItemForm", new WatchlistItem());
+        if(watchlistIte==null)
+            watchlistItem=new WatchlistItem();
+        else
+            watchlistItem=watchlistIte;
+
+
+        model.put("watchlistItemForm", watchlistItem);
         return new ModelAndView(viewName, model);
     }
     @PostMapping("/watchlistItemForm")
     public ModelAndView submitWatchlistItemForm(WatchlistItem watchlistItem) {
 
         WatchlistItem existingItem = findWatchlistItemById(watchlistItem.getId());
-
+        System.out.println(watchlistItem.getId());
         if (existingItem == null) {
             watchlistItem.setId(index++);
             watchlistItems.add(watchlistItem);
@@ -48,11 +57,12 @@ public class ListeLecture {
     }
 
     private WatchlistItem findWatchlistItemById(Integer id) {
+        WatchlistItem watchlistIt=null;
        for(WatchlistItem watchlistItem: watchlistItems){
            if(watchlistItem.getId()==id)
-               return watchlistItem;
+               watchlistIt= watchlistItem;
            }
-       return null;
+       return watchlistIt;
     }
 
     @GetMapping("/watchlist")

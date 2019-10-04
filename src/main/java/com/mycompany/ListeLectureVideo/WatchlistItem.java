@@ -2,8 +2,6 @@ package com.mycompany.ListeLectureVideo;
 
 import lombok.Data;
 
-import javax.annotation.sql.DataSourceDefinition;
-
 @Data
 public class WatchlistItem {
 
@@ -11,20 +9,20 @@ public class WatchlistItem {
     private String rating;
     private String priority;
     private String comment;
-    private Integer Id=1;
+    private Integer id;
     private static int index=0;
 
     public WatchlistItem() {
-        this.Id = index ++;
+        this.id = index ++;
     }
 
-    public WatchlistItem(String title, String rating,String priority, String comment, Integer Id) {
+    public WatchlistItem(String title, String rating,String priority, String comment, Integer id) {
         super();
         this.title = title;
         this.rating= rating;
         this.priority= priority;
         this.comment= comment;
-        this.Id= index++;
+        this.id= index++;
     }
 
     public String getTitle() {
@@ -60,10 +58,10 @@ public class WatchlistItem {
     }
 
     public Integer getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Integer id) {
-        Id = id;
+        id = id;
     }
 }

@@ -48,8 +48,11 @@ public class ListeLecture {
     }
 
     private WatchlistItem findWatchlistItemById(Integer id) {
-        WatchlistItem watchlistItem= ;
-        return watchlistItem;
+       for(WatchlistItem watchlistItem: watchlistItems){
+           if(watchlistItem.getId()==id)
+               return watchlistItem;
+       }
+
     }
 
     @GetMapping("/watchlist")

@@ -1,12 +1,17 @@
 package com.mycompany.ListeLectureVideo;
 
+import lombok.Data;
+
+import javax.annotation.sql.DataSourceDefinition;
+
+@Data
 public class WatchlistItem {
 
     private String title;
     private String rating;
     private String priority;
     private String comment;
-    private Integer Id;
+    private Integer Id=1;
     private static int index=0;
 
     public WatchlistItem() {

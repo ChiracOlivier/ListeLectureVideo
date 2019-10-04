@@ -46,6 +46,12 @@ public class ListeLecture {
 
         return new ModelAndView(redirect);
     }
+
+    private WatchlistItem findWatchlistItemById(Integer id) {
+        WatchlistItem watchlistItem= ;
+        return watchlistItem;
+    }
+
     @GetMapping("/watchlist")
     public ModelAndView getWatchlist() {
 

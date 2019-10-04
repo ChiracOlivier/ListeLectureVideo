@@ -51,8 +51,8 @@ public class ListeLecture {
        for(WatchlistItem watchlistItem: watchlistItems){
            if(watchlistItem.getId()==id)
                return watchlistItem;
-       }
-
+           }
+       return null;
     }
 
     @GetMapping("/watchlist")

@@ -43,7 +43,7 @@
                 <input th:field="*{watchlistItemFor.title}"  type = "text" class = "form-control" placeholder = "Mandatory">
             </div>
             <div class="col-sm-4">
-                <span class="text-danger" th:errors="*{watchlistItemFor.title}"> </span>
+                <span class="text-danger" th:text="*{watchlistItemFor.messageTitle(watchlistItemFor.title)}"> </span>
             </div>
         </div>
 

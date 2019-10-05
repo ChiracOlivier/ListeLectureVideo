@@ -36,7 +36,14 @@ public class WatchlistItem {
         this.comment= comment;
         this.id= index;
     }
-
+    public String messageTitle(String title){
+        if(title==null)
+            return "";
+        else if(title.isEmpty())
+            return "Please enter the title";
+        else
+            return "";
+    }
     public String getTitle() {
         return title;
     }

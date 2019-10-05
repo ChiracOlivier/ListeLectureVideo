@@ -8,11 +8,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+
+import javax.validation.Valid;
 
 @Controller
 public class ListeLecture {
@@ -38,8 +41,14 @@ public class ListeLecture {
         return new ModelAndView(viewName, model);
     }
     @PostMapping("/watchlistItemForm")
-    public ModelAndView submitWatchlistItemForm(WatchlistItem watchlistItem){
+    public ModelAndView submitWatchlistItemForm(@Valid WatchlistItem watchlistItem, BindingResult bindingResult){
 
+        if(bindingResult.hasErrors()){
+            Map<String, Object> model = new HashMap<String, Object>();
+            if(watchlistItem!=null) System.out.println(watchlistItem.getComment());
+            model.put("watchlistItemFor", watchlistItem);
+            return new ModelAndView("watchlistItemForm", model);
+        }
         WatchlistItem existingItem = findWatchlistItemById(inde);
         inde=index++;
 

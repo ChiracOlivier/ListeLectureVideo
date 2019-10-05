@@ -1,24 +1,22 @@
 package com.mycompany.ListeLectureVideo;
 
-import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-@Data
 public class WatchlistItem {
 
     @NotBlank(message = "Please enter the title")
     private String title;
 
-    @NotBlank(message = "Please enter the rating" )
+    @javax.validation.constraints.NotBlank(message = "Please enter the rating" )
     private String rating;
 
     @Priority
-    @NotBlank(message = "Please enter the priority")
+    @javax.validation.constraints.NotBlank(message = "Please enter the priority")
     private String priority;
 
-    @NotBlank(message = "Please enter the comment")
+    @javax.validation.constraints.NotBlank(message = "Please enter the comment")
     @Size(max = 50, message = "Comment should be maximum 50 caracters.")
     private String comment;
 

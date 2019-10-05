@@ -3,6 +3,7 @@ package com.mycompany.ListeLectureVideo;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+
 public class PriorityValidation implements ConstraintValidator<Priority, String> {
    public void initialize(Priority constraint) {
    }

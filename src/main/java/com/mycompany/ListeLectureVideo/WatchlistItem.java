@@ -10,10 +10,10 @@ public class WatchlistItem {
     private String priority;
     private String comment;
     private Integer id;
-    private static int index=0;
+    private static int index;
 
     public WatchlistItem() {
-        this.id = index ++;
+        this.id = index++ ;
     }
 
     public WatchlistItem(String title, String rating,String priority, String comment, Integer id) {
@@ -22,7 +22,7 @@ public class WatchlistItem {
         this.rating= rating;
         this.priority= priority;
         this.comment= comment;
-        this.id= index++;
+        this.id= index;
     }
 
     public String getTitle() {

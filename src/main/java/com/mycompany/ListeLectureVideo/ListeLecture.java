@@ -18,7 +18,7 @@ import org.springframework.web.servlet.view.RedirectView;
 public class ListeLecture {
 
     private List<WatchlistItem> watchlistItems= new ArrayList<WatchlistItem>();
-    private static int index=0;
+    private static int index=0, inde=0;
     @GetMapping("/watchlistItemForm")
     public ModelAndView showWatchlistItemForm(@RequestParam(required = false) Integer id){
         String viewName= "watchlistItemForm";
@@ -27,19 +27,22 @@ public class ListeLecture {
         WatchlistItem watchlistItem;
 
         if(watchlistIte==null)
-            watchlistItem=new WatchlistItem();
+            watchlistItem = new WatchlistItem();
         else
-            watchlistItem=watchlistIte;
+            watchlistItem = watchlistIte;
 
 
-        model.put("watchlistItemForm", watchlistItem);
+
+       if(id!=null) inde=id;
+        model.put("watchlistItemFor", watchlistItem);
         return new ModelAndView(viewName, model);
     }
     @PostMapping("/watchlistItemForm")
-    public ModelAndView submitWatchlistItemForm(WatchlistItem watchlistItem) {
+    public ModelAndView submitWatchlistItemForm(WatchlistItem watchlistItem){
 
-        WatchlistItem existingItem = findWatchlistItemById(watchlistItem.getId());
-        System.out.println(watchlistItem.getId());
+        WatchlistItem existingItem = findWatchlistItemById(inde);
+        inde=index++;
+
         if (existingItem == null) {
             watchlistItem.setId(index++);
             watchlistItems.add(watchlistItem);
@@ -71,7 +74,6 @@ public class ListeLecture {
         String viewName = "watchlist";
 
         Map<String, Object> model = new HashMap<String, Object>();
-
 
         model.put("watchlistItems", watchlistItems);
         model.put("numberOfMovies", watchlistItems.size());

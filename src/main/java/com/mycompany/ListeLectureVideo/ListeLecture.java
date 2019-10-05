@@ -45,7 +45,6 @@ public class ListeLecture {
 
         if(bindingResult.hasErrors()){
             Map<String, Object> model = new HashMap<String, Object>();
-            if(watchlistItem!=null) System.out.println(watchlistItem.getComment());
             model.put("watchlistItemFor", watchlistItem);
             return new ModelAndView("watchlistItemForm", model);
         }

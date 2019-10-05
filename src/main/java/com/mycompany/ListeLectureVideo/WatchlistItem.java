@@ -14,6 +14,7 @@ public class WatchlistItem {
     @NotBlank(message = "Please enter the rating" )
     private String rating;
 
+    @Priority
     @NotBlank(message = "Please enter the priority")
     private String priority;
 

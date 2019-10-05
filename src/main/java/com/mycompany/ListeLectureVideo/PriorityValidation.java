@@ -8,6 +8,6 @@ public class PriorityValidation implements ConstraintValidator<Priority, String>
    }
 
    public boolean isValid(String obj, ConstraintValidatorContext context) {
-      return false;
+      return obj.trim().length()==1 && "LMH".contains(obj.toUpperCase());
    }
 }

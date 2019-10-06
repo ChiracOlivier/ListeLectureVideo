@@ -33,6 +33,12 @@
             </ul>
         </div>
     </nav>
+    <!-- Form levels error messages here -->
+    <div class = "form-group row ">
+        <div class="col-sm-8">
+            <span class="text-danger" th:errors="*{global}"> </span>
+        </div>
+    </div>
     <form action="#" method="post" th:action="@{/watchlistItemForm}">
         <h2 class = "mt-4">Submit an item</h2>
         <h3 th:value="*{watchlistItemFor.title}"></h3>

@@ -1,4 +1,4 @@
-package com.openclassrooms.watchlist;
+package com.mycompany.ListeLectureVideo;
 
 import com.mycompany.ListeLectureVideo.GoodMovieValidator;
 

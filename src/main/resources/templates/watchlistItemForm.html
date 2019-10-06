@@ -1,4 +1,4 @@
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <!-- Meta tags -->
     <meta charset = "utf-8">
@@ -39,37 +39,37 @@
             <span class="text-danger" th:errors="*{global}"> </span>
         </div>
     </div>
-    <form action="#" method="post" th:action="@{/watchlistItemForm}">
+    <form action="#" method="post" th:action="@{/watchlistItemForm}" th:object="${watchlistItemFor}">
         <h2 class = "mt-4">Submit an item</h2>
-        <h3 th:value="*{watchlistItemFor.title}"></h3>
+        <h3 th:text="*{title}"></h3>
         <hr/>
         <div class = "form-group row ">
             <label  class = "col-sm-2 col-form-label">Title</label>
             <div class = "col-sm-4">
-                <input th:field="*{watchlistItemFor.title}"  type = "text" class = "form-control" placeholder = "Mandatory">
+                <input th:field="*{title}"  type = "text" class = "form-control" placeholder = "Mandatory">
             </div>
             <div class="col-sm-4">
-                <span class="text-danger" th:text="*{watchlistItemFor.messageTitle(watchlistItemFor.title)}"> </span>
+                <span class="text-danger" th:text="*{messageTitle(title)}"> </span>
             </div>
         </div>
 
         <div class = "form-group row ">
             <label  class = "col-sm-2 col-form-label mr-0">Rating</label>
             <div class = "col-sm-4">
-                <input  th:field="*{watchlistItemFor.rating}" type = "text" class = "form-control" placeholder = "5.0 < Number < 10.0">
+                <input  th:field="*{rating}" type = "text" class = "form-control" placeholder = "5.0 < Number < 10.0">
             </div>
             <div class="col-sm-4">
-                <span class="text-danger" th:errors="*{watchlistItemFor.rating}"> </span>
+                <span class="text-danger" th:errors="*{rating}"> </span>
             </div>
         </div>
 
         <div class = "form-group row ">
             <label  class = "col-sm-2 col-form-label mr-0">Priority</label>
             <div class = "col-sm-4">
-                <input th:field="*{watchlistItemFor.priority}" type = "text" class = "form-control" placeholder = "Low|Medium|High">
+                <input th:field="*{priority}" type = "text" class = "form-control" placeholder = "Low|Medium|High">
             </div>
             <div class="col-sm-4">
-                <span class="text-danger" th:errors="*{watchlistItemFor.priority}"> </span>
+                <span class="text-danger" th:errors="*{priority}"> </span>
             </div>
         </div>
 
@@ -77,18 +77,18 @@
             <label  class = "col-sm-2 col-form-label">Comments</label>
             <div class = "col-sm-4">
                 <label>
-                    <textarea th:field="*{watchlistItemFor.comment}" class = "form-control" rows = "3" placeholder = "Max. 50 chars"></textarea>
+                    <textarea th:field="*{comment}" class = "form-control" rows = "3" placeholder = "Max. 50 chars"></textarea>
                 </label>
             </div>
             <div class="col-sm-4">
-                <span class="text-danger" th:errors="*{watchlistItemFor.comment}"> </span>
+                <span class="text-danger" th:errors="*{comment}"> </span>
             </div>
 
         </div>
 
         <div class = "form-group row">
             <div class = "col-sm-10">
-                <input type="hidden" th:field="*{watchlistItemFor.id}" />
+                <input type="hidden" th:field="*{id}" />
                 <button type = "submit" class = "btn btn-primary">Submit</button>
             </div>
         </div>

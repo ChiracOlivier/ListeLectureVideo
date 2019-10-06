@@ -98,5 +98,11 @@ public class ListeLecture {
 
         return new ModelAndView(viewName , model);
     }
+
+    @PostMapping("/watchlistItem")
+    public ModelAndView watchlistItemSubmit(@Valid WatchlistItem watchlistItem, BindingResult bindingResult) {
+
+       
+    }
 }
 

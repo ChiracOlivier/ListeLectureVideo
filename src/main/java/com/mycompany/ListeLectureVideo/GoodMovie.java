@@ -1,5 +1,7 @@
 package com.openclassrooms.watchlist;
 
+import com.mycompany.ListeLectureVideo.GoodMovieValidator;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

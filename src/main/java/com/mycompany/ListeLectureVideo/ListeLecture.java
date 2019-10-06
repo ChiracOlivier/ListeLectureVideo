@@ -102,7 +102,21 @@ public class ListeLecture {
     @PostMapping("/watchlistItem")
     public ModelAndView watchlistItemSubmit(@Valid WatchlistItem watchlistItem, BindingResult bindingResult) {
 
-       
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("watchlistItem");
+        }
+
+        if (itemAlreadyExists(watchlistItem.getTitle())) {
+            bindingResult.rejectValue("title", "", "This movie is already on your watchlist");
+            return new ModelAndView("watchlistItem");
+        }
+
+        watchlistItems.add(watchlistItem);
+
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("/watchlist");
+
+        return new ModelAndView(new RedirectView("/watchlist"));
     }
 }
 

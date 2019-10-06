@@ -76,6 +76,10 @@ public class ListeLecture {
            }
        return watchlistIt;
     }
+    private boolean itemAlreadyExists(String title) {
+
+       
+    }
 
     @GetMapping("/watchlist")
     public ModelAndView getWatchlist() {

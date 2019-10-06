@@ -4,6 +4,7 @@ package com.mycompany.ListeLectureVideo;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+@com.openclassrooms.watchlist.GoodMovie
 public class WatchlistItem {
 
     @NotBlank(message = "Please enter the title")

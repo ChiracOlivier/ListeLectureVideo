@@ -78,7 +78,12 @@ public class ListeLecture {
     }
     private boolean itemAlreadyExists(String title) {
 
-       
+        for (WatchlistItem watchlistItem : watchlistItems) {
+            if (watchlistItem.getTitle().equals(title)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @GetMapping("/watchlist")

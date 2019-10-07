@@ -2,9 +2,12 @@ package com.mycompany.ListeLectureVideo.repository;
 
 import com.mycompany.ListeLectureVideo.domain.WatchlistItem;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class WatchlistRepository {
     private List<WatchlistItem> watchlistItems = new ArrayList<WatchlistItem>();
-    private static int index = 1;
+    private  int index = 1;
 
     public List<WatchlistItem> getList(){
         return watchlistItems;
@@ -15,7 +18,7 @@ public class WatchlistRepository {
         watchlistItems.add(watchlistItem);
     }
 
-    private WatchlistItem findWatchlistItemById(Integer id) {
+    public WatchlistItem findById(Integer id) {
         WatchlistItem watchlistIt=null;
         for(WatchlistItem watchlistItem: watchlistItems){
             if(watchlistItem.getId()==id)

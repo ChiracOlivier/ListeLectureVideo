@@ -74,15 +74,15 @@ public class ListeLectureController {
 
         return new ModelAndView(redirect);
     }
-
     private WatchlistItem findWatchlistItemById(Integer id) {
         WatchlistItem watchlistIt=null;
-       for(WatchlistItem watchlistItem: watchlistItems){
-           if(watchlistItem.getId()==id)
-               watchlistIt= watchlistItem;
-           }
-       return watchlistIt;
+        for(WatchlistItem watchlistItem: watchlistItems){
+            if(watchlistItem.getId()==id)
+                watchlistIt= watchlistItem;
+        }
+        return watchlistIt;
     }
+
     private boolean itemAlreadyExists(String title) {
 
         for (WatchlistItem watchlistItem : watchlistItems) {

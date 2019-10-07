@@ -38,7 +38,7 @@
     </nav>
     <h2  class = "mt-4">Watchlist</h2>
 
-    <table class="table">
+   <table class="table"  th:object="${watchlistItems}">
         <thead class = "thead-light">
         <tr>
             <th class="text-left">Title</th>
@@ -50,11 +50,11 @@
         </thead>
         <tbody>
         <tr th:each=" watchlistItem : ${watchlistItems}">
-            <td th:text="${watchlistItems.title}">Avatar</td>
-            <td th:text="${watchlistItems.rating}">7.8</td>
-            <td th:text="${watchlistItems.priority}">LOW</td>
-            <td th:text="${watchlistItems.comment}">Peter recommended</td>
-            <td><a href="#" class="btn btn-info" role="button" th:href="@{/watchlistItemForm(id=${watchlistItems.id})}">Update</a></td>
+            <td th:text="${watchlistItems.getTitle()}">Avatar</td>
+            <td th:text="${watchlistItems.getRating()}">7.8</td>
+            <td th:text="${watchlistItems.getPriority()}">LOW</td>
+            <td th:text="${watchlistItems.getComment()}">Peter recommended</td>
+            <td><a href="#" class="btn btn-info" role="button" th:href="@{/watchlistItemForm(id=${watchlistItems.getId()})}">Update</a></td>
 
         </tr>
         </tbody>

@@ -7,15 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
 @Controller
 public class CustomErrorController implements ErrorController {
-    Map<String, Object> model = new HashMap<String, Object>();
+    Map<String, Object> modell = new HashMap<String, Object>();
     @Override
     public String getErrorPath(){
         return "/error";
@@ -24,8 +22,7 @@ public class CustomErrorController implements ErrorController {
     @GetMapping("/error")
     public ModelAndView handlerError(HttpServletResponse response){
         int code= response.getStatus();
-        System.out.println(code);
-        model.put("status", code);
-        return new ModelAndView("error", model);
+        modell.put("status", code);
+        return new ModelAndView("error", modell);
     }
 }

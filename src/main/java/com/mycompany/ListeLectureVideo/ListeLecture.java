@@ -9,7 +9,6 @@ import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,10 +44,10 @@ public class ListeLecture {
     public ModelAndView submitWatchlistItemForm(@Valid WatchlistItem watchlistItem, BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){
-            Map<String, Object> model = new HashMap<String, Object>();
-            model.put("error1", true);
-            model.put("watchlistItemFor", watchlistItem);
-            return new ModelAndView("watchlistItemForm", model);
+            Map<String, Object> modello = new HashMap<String, Object>();
+            modello.put("error1", true);
+            modello.put("watchlistItemFor", watchlistItem);
+            return new ModelAndView("watchlistItemForm", modello);
         }
         WatchlistItem existingItem = findWatchlistItemById(inde);
         inde=index++;
@@ -62,7 +61,6 @@ public class ListeLecture {
             existingItem.setRating(watchlistItem.getRating());
             existingItem.setTitle(watchlistItem.getTitle());
         }
-
         RedirectView redirect = new RedirectView();
         redirect.setUrl("/watchlist");
 
@@ -93,37 +91,35 @@ public class ListeLecture {
         String viewName = "watchlist";
 
         Map<String, Object> model = new HashMap<String, Object>();
-
         model.put("watchlistItems", watchlistItems);
         model.put("numberOfMovies", watchlistItems.size());
-
+        //System.out.println(watchlistItems.get(inde).getTitle());
+        //System.out.println(watchlistItems.size());
         return new ModelAndView(viewName , model);
     }
 
-    @PostMapping("/watchlistItem")
+    /*@PostMapping("/watchlistItem")
     public ModelAndView watchlistItemSubmit(@Valid WatchlistItem watchlistItem, BindingResult bindingResult) {
 
-        Map<String, Object> model = new HashMap<String, Object>();
+        Map<String, Object> modeli = new HashMap<String, Object>();
 
         if (bindingResult.hasErrors()) {
-            model.put("watchlistItemFor", watchlistItem);
-            return new ModelAndView("watchlistItemFor", model);
+            modeli.put("watchlistItemFor", watchlistItem);
+            return new ModelAndView("watchlistItemFor", modeli);
         }
 
         if (itemAlreadyExists(watchlistItem.getTitle())) {
             bindingResult.rejectValue("title", "", "This movie is already on your watchlist");
-           model.put("watchlistItemFor",watchlistItem);
-            return new ModelAndView("watchlistItemFor", model);
+           modeli.put("watchlistItemFor",watchlistItem);
+            return new ModelAndView("watchlistItemFor", modeli);
         }
 
         watchlistItems.add(watchlistItem);
-        model.put("watchlistItems",watchlistItems);
-        model.put("numberOfMovies", watchlistItems.size());
 
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("/watchlist");
 
-        return new ModelAndView(new RedirectView("/watchlist"), model);
-    }
+        return new ModelAndView(redirectView);
+    }*/
 }
 

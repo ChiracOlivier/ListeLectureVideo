@@ -52,7 +52,7 @@ public class ListeLectureController {
             bindingResult.rejectValue("title", "", "This movie is already on your watchlist");
 
             modello.put("watchlistItemFor",watchlistItem);
-            return new ModelAndView("watchlistItemFor", modello);
+            return new ModelAndView("watchlistItemForm", modello);
         }
         RedirectView redirect = new RedirectView();
         redirect.setUrl("/watchlist");

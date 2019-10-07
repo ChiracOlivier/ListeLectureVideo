@@ -47,7 +47,7 @@
             <div class = "col-sm-4">
                 <input th:field="*{title}"  type = "text" class = "form-control" placeholder = "Mandatory">
             </div>
-            <div class="col-sm-4" th:if="${error==true}">
+            <div class="col-sm-4" th:if="${error1==true}">
                 <span class="text-danger" th:text="*{messageTitle(title)}"> </span>
             </div>
         </div>

@@ -46,8 +46,7 @@ public class ListeLecture {
 
         if(bindingResult.hasErrors()){
             Map<String, Object> model = new HashMap<String, Object>();
-            boolean error= true;
-            model.put("error", error);
+            model.put("error1", true);
             model.put("watchlistItemFor", watchlistItem);
             return new ModelAndView("watchlistItemForm", model);
         }
@@ -96,7 +95,7 @@ public class ListeLecture {
         Map<String, Object> model = new HashMap<String, Object>();
 
         model.put("watchlistItems", watchlistItems);
-        model.put("numberOfMovi", watchlistItems.size());
+        model.put("numberOfMovies", watchlistItems.size());
 
         return new ModelAndView(viewName , model);
     }
@@ -108,20 +107,23 @@ public class ListeLecture {
 
         if (bindingResult.hasErrors()) {
             model.put("watchlistItemFor", watchlistItem);
-            return new ModelAndView("watchlistItem");
+            return new ModelAndView("watchlistItemFor", model);
         }
 
         if (itemAlreadyExists(watchlistItem.getTitle())) {
             bindingResult.rejectValue("title", "", "This movie is already on your watchlist");
-            return new ModelAndView("watchlistItem");
+           model.put("watchlistItemFor",watchlistItem);
+            return new ModelAndView("watchlistItemFor", model);
         }
 
         watchlistItems.add(watchlistItem);
+        model.put("watchlistItems",watchlistItems);
+        model.put("numberOfMovies", watchlistItems.size());
 
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("/watchlist");
 
-        return new ModelAndView(new RedirectView("/watchlist"));
+        return new ModelAndView(new RedirectView("/watchlist"), model);
     }
 }
 

@@ -12,7 +12,7 @@
 <body>
 <div class="container">
     <nav class = "navbar navbar-expand-sm navbar-dark bg-secondary">
-        <a class = "navbar-brand" href = "home.html">Watchlist App</a>
+        <a class = "navbar-brand" href = "/home">Watchlist App</a>
         <button class = "navbar-toggler" type = "button" data-toggle = "collapse"
                 data-target = "#navbarSupportedContent"
                 aria-controls = "navbarSupportedContent" aria-expanded = "false"
@@ -24,10 +24,10 @@
         <div class = "collapse navbar-collapse" id = "navbarSupportedContent">
             <ul class = "navbar-nav mr-auto">
                 <li class = "nav-item">
-                    <a class = "nav-link" href = "home.html">Home</a>
+                    <a class = "nav-link" href = "/home">Home</a>
                 </li>
                 <li class = "nav-item active">
-                    <a class = "nav-link" href = "watchlist.html">Watchlist</a>
+                    <a class = "nav-link" href = "/watchlist">Watchlist</a>
                 </li>
                 <li class = "nav-item ">
                     <a class = "nav-link" th:href = "@{/watchlistItemForm}">Submit an item</a>
@@ -61,7 +61,7 @@
     </table>
     <hr/>
     <div >
-        <div>Number of movies to watch: <span th:text="${numberOfMovi}"></span> </div>
+        <div>Number of movies to watch: <span th:text="${numberOfMovies}"></span> </div>
     </div>
 
 </div>

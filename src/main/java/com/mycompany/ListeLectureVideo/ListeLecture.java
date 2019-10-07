@@ -46,6 +46,8 @@ public class ListeLecture {
 
         if(bindingResult.hasErrors()){
             Map<String, Object> model = new HashMap<String, Object>();
+            boolean error= true;
+            model.put("error", error);
             model.put("watchlistItemFor", watchlistItem);
             return new ModelAndView("watchlistItemForm", model);
         }
@@ -94,7 +96,7 @@ public class ListeLecture {
         Map<String, Object> model = new HashMap<String, Object>();
 
         model.put("watchlistItems", watchlistItems);
-        model.put("numberOfMovies", watchlistItems.size());
+        model.put("numberOfMovi", watchlistItems.size());
 
         return new ModelAndView(viewName , model);
     }
@@ -102,7 +104,10 @@ public class ListeLecture {
     @PostMapping("/watchlistItem")
     public ModelAndView watchlistItemSubmit(@Valid WatchlistItem watchlistItem, BindingResult bindingResult) {
 
+        Map<String, Object> model = new HashMap<String, Object>();
+
         if (bindingResult.hasErrors()) {
+            model.put("watchlistItemFor", watchlistItem);
             return new ModelAndView("watchlistItem");
         }
 

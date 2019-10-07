@@ -12,7 +12,7 @@
 	<artifactId>ListeLectureVideo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ListeLectureVideo</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Une liste de lecture de ses films préférés.</description>
 
 
 	<properties>
@@ -46,7 +46,18 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-java8time</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf-spring5</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

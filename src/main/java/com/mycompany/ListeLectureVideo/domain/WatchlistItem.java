@@ -1,10 +1,13 @@
-package com.mycompany.ListeLectureVideo;
+package com.mycompany.ListeLectureVideo.domain;
 
+
+import com.mycompany.ListeLectureVideo.Validation.GoodMovie;
+import com.mycompany.ListeLectureVideo.Validation.Priority;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-//@GoodMovie
+@GoodMovie
 public class WatchlistItem {
 
     @NotBlank(message = "Please enter the title")
@@ -15,7 +18,7 @@ public class WatchlistItem {
 
     @Priority
     @javax.validation.constraints.NotBlank(message = "Please enter the priority")
-    String priority;
+    public String priority;
 
     @javax.validation.constraints.NotBlank(message = "Please enter the comment")
     @Size(max = 50, message = "Comment should be maximum 50 caracters.")

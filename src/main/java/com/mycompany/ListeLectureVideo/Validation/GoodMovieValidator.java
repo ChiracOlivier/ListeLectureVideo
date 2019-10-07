@@ -1,4 +1,6 @@
-package com.mycompany.ListeLectureVideo;
+package com.mycompany.ListeLectureVideo.Validation;
+
+import com.mycompany.ListeLectureVideo.domain.WatchlistItem;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

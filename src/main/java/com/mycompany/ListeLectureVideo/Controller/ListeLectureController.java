@@ -1,4 +1,4 @@
-package com.mycompany.ListeLectureVideo;
+package com.mycompany.ListeLectureVideo.Controller;
 
 
 
@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.mycompany.ListeLectureVideo.domain.WatchlistItem;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.validation.Valid;
 
 @Controller
-public class ListeLecture {
+public class ListeLectureController {
 
     private List<WatchlistItem> watchlistItems= new ArrayList<WatchlistItem>();
     private static int index=0, inde=0;
@@ -42,13 +43,20 @@ public class ListeLecture {
     }
     @PostMapping("/watchlistItemForm")
     public ModelAndView submitWatchlistItemForm(@Valid WatchlistItem watchlistItem, BindingResult bindingResult){
-
+        Map<String, Object> modello = new HashMap<String, Object>();
         if(bindingResult.hasErrors()){
-            Map<String, Object> modello = new HashMap<String, Object>();
+
             modello.put("error1", true);
             modello.put("watchlistItemFor", watchlistItem);
             return new ModelAndView("watchlistItemForm", modello);
         }
+        if (itemAlreadyExists(watchlistItem.getTitle())) {
+            bindingResult.rejectValue("title", "", "This movie is already on your watchlist");
+
+            modello.put("watchlistItemFor",watchlistItem);
+            return new ModelAndView("watchlistItemFor", modello);
+        }
+
         WatchlistItem existingItem = findWatchlistItemById(inde);
         inde=index++;
 
@@ -97,29 +105,5 @@ public class ListeLecture {
         //System.out.println(watchlistItems.size());
         return new ModelAndView(viewName , model);
     }
-
-    /*@PostMapping("/watchlistItem")
-    public ModelAndView watchlistItemSubmit(@Valid WatchlistItem watchlistItem, BindingResult bindingResult) {
-
-        Map<String, Object> modeli = new HashMap<String, Object>();
-
-        if (bindingResult.hasErrors()) {
-            modeli.put("watchlistItemFor", watchlistItem);
-            return new ModelAndView("watchlistItemFor", modeli);
-        }
-
-        if (itemAlreadyExists(watchlistItem.getTitle())) {
-            bindingResult.rejectValue("title", "", "This movie is already on your watchlist");
-           modeli.put("watchlistItemFor",watchlistItem);
-            return new ModelAndView("watchlistItemFor", modeli);
-        }
-
-        watchlistItems.add(watchlistItem);
-
-        RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("/watchlist");
-
-        return new ModelAndView(redirectView);
-    }*/
 }
 

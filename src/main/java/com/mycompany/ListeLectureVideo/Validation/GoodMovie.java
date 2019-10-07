@@ -1,4 +1,4 @@
-package com.mycompany.ListeLectureVideo;
+package com.mycompany.ListeLectureVideo.Validation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

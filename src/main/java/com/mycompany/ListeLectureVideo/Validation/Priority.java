@@ -1,7 +1,4 @@
-package com.mycompany.ListeLectureVideo;
-
-import org.hibernate.validator.constraints.CompositionType;
-import org.hibernate.validator.constraints.ConstraintComposition;
+package com.mycompany.ListeLectureVideo.Validation;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

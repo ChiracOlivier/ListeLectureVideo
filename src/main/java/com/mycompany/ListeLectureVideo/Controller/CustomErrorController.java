@@ -1,4 +1,4 @@
-package com.mycompany.ListeLectureVideo;
+package com.mycompany.ListeLectureVideo.Controller;
 
 import org.apache.catalina.filters.ExpiresFilter;
 import org.springframework.boot.web.servlet.error.ErrorController;

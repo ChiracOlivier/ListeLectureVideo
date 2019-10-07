@@ -7,15 +7,19 @@ import java.util.List;
 
 public class WatchlistRepository {
     private List<WatchlistItem> watchlistItems = new ArrayList<WatchlistItem>();
-    private  int index = 1;
+
 
     public List<WatchlistItem> getList(){
         return watchlistItems;
     }
+    public boolean itemAlreadyExist(String title) {
+        return findByTitle(title) != null;
+    }
 
-    public void addItem(WatchlistItem watchlistItem) {
+    public int addItem(WatchlistItem watchlistItem,int index) {
         watchlistItem.setId(index++);
         watchlistItems.add(watchlistItem);
+        return index;
     }
 
     public WatchlistItem findById(Integer id) {

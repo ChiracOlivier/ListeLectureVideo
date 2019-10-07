@@ -1,13 +1,12 @@
 package com.mycompany.ListeLectureVideo.service;
 
 import com.mycompany.ListeLectureVideo.domain.WatchlistItem;
-import com.mycompany.ListeLectureVideo.exception.itemAlreadyExistException;
+import com.mycompany.ListeLectureVideo.exception.BindingResultException;
+import com.mycompany.ListeLectureVideo.exception.ItemAlreadyExistException;
 import com.mycompany.ListeLectureVideo.repository.WatchlistRepository;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
-import java.util.Map;
 
 public class WatchlistService {
 
@@ -25,25 +24,25 @@ public class WatchlistService {
         return watchlistRepository.findById(id);
     }
 
-    public void addOrUpdateWatchlistItem(int inde, WatchlistItem watchlistItem, BindingResult bindingResult,  Map<String, Object> modello ){
+    public int[] addOrUpdateWatchlistItem(int inde, WatchlistItem watchlistItem , BindingResult bindingResult, int index ) throws ItemAlreadyExistException, BindingResultException {
+       int[] tab={inde,index};
         if(bindingResult.hasErrors()){
-
-           throw new  bindingResultException;
+           throw new BindingResultException();
         }
-        if (itemAlreadyExists(watchlistItem.getTitle())) {
-           throw new itemAlreadyExistException;
+        if (watchlistRepository.itemAlreadyExist(watchlistItem.getTitle())) {
+           throw new ItemAlreadyExistException();
         }
-        WatchlistItem existingItem = findWatchlistItemById(inde);
-        inde=index++;
+        WatchlistItem existingItem = findWatchlistItemById(tab[0]);
+        tab[0]=tab[1]++;
 
         if (existingItem == null) {
-            watchlistItem.setId(index++);
-            watchlistItems.add(watchlistItem);
+           tab[1]=watchlistRepository.addItem(watchlistItem, tab[1]);
         } else {
             existingItem.setComment(watchlistItem.getComment());
             existingItem.setPriority(watchlistItem.getPriority());
             existingItem.setRating(watchlistItem.getRating());
             existingItem.setTitle(watchlistItem.getTitle());
         }
+        return tab;
     }
 }

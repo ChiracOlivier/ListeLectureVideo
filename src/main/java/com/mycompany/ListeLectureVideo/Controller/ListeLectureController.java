@@ -42,22 +42,7 @@ public class ListeLectureController {
     @PostMapping("/watchlistItemForm")
     public ModelAndView submitWatchlistItemForm(@Valid WatchlistItem watchlistItem, BindingResult bindingResult){
         Map<String, Object> modello = new HashMap<String, Object>();
-        try {
-            tab=watchlistService.addOrUpdateWatchlistItem(tab[0], watchlistItem, bindingResult, tab[1]);
-        }catch (BindingResultException b){
-            modello.put("error1", true);
-            modello.put("watchlistItemFor", watchlistItem);
-            return new ModelAndView("watchlistItemForm", modello);
-        }catch (ItemAlreadyExistException i){
-            bindingResult.rejectValue("title", "", "This movie is already on your watchlist");
-
-            modello.put("watchlistItemFor",watchlistItem);
-            return new ModelAndView("watchlistItemForm", modello);
-        }
-        RedirectView redirect = new RedirectView();
-        redirect.setUrl("/watchlist");
-
-        return new ModelAndView(redirect);
+       
     }
 
 

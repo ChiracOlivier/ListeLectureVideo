@@ -54,7 +54,10 @@ public class ListeLectureController {
             modello.put("watchlistItemFor",watchlistItem);
             return new ModelAndView("watchlistItemForm", modello);
         }
-       
+        RedirectView redirect = new RedirectView();
+        redirect.setUrl("/watchlist");
+
+        return new ModelAndView(redirect);
     }
 
 

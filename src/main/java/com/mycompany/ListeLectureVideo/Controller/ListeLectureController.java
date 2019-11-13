@@ -75,4 +75,6 @@ public class ListeLectureController {
         //System.out.println(watchlistService.findWatchlistItemById(tab[0]).getTitle());
         return new ModelAndView(viewName , model);
     }
+
+
 }
